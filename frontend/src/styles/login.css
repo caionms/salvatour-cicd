@@ -1,0 +1,102 @@
+
+.backgroundLogin{
+    background-image: url('../assets/elevador.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+    background-color: #e8e2e20d;
+    margin: auto;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.614);
+    padding: 40px;
+    margin-right: 180px;
+    border-radius: 20px;
+
+}
+
+.recoveryContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #FFF;
+}
+
+.formRecovery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.614);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recoveryPassword{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+
+.title{
+    font-family: 'Poetsen One', sans-serif;
+    font-weight: 400;
+    color: #2d2a2a;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 60px;
+    font-size: 40px;
+}
+
+.links{
+    text-align: right;
+    /* color: #6D6D6D; */
+    color: #2d2a2a;
+    font-family: 'Poetsen One', sans-serif;
+    text-decoration: none;
+    font-size: 14.4px;
+    margin-bottom: 20px;
+
+}
+.text-cadastro{
+    text-align: center;
+    /* color: #6D6D6D; */
+    color: #2d2a2a;
+    margin-top: 20px;
+    font-family: 'Poetsen One', sans-serif;
+    font-size: 14.4px;
+    margin-bottom: 30px;
+    margin-right: 12px;
+
+
+}
+
+.link-cadastro{
+ color: #000;
+ text-decoration: none;
+}
+.links:hover, .link-cadastro:hover{
+    color:#6b4821;;
+}
+
+.alert-style{
+    font-size: 15px;
+}
+
+
