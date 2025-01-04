@@ -1,22 +1,14 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+import mongoose from 'mongoose';
 
-
-dotenv.config();
-
-const connect = async () => {
-  const dbUser = process.env.DB_USER;
-  const dbPassword = process.env.DB_PASS;
+const connectDB = async () => {
   try {
-    mongoose.set("strictQuery", true);
-    await mongoose.connect(
-      `mongodb+srv://${dbUser}:${dbPassword}@cluster0.5xtfehw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,
-      {dbName: 'MATC84-LABORATORIO-DE-PROGRAMACAO-WEB'}
-    );
-    console.log("Banco conectado com sucesso!");
+    const mongoURI = process.env.DB_URI;
+    await mongoose.connect(mongoURI);
+    console.log('MongoDB conectado com sucesso!');
   } catch (error) {
-    console.log(error)
+    console.error('Erro ao conectar ao MongoDB:', error);
+    process.exit(1);
   }
 };
 
-export default { connect };
+export default connectDB;
