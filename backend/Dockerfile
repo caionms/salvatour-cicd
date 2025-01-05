@@ -1,6 +1,9 @@
 # Use uma imagem base oficial do Node.js
 FROM node:16
 
+# Atualize o npm para a última versão estável
+RUN npm install -g npm@8.19.4
+
 # Crie e defina o diretório de trabalho
 WORKDIR /app
 
