@@ -1,4 +1,4 @@
-name: CI - Run Tests
+name: CI - Backend and Frontend
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
       - develop
 
 jobs:
-  test:
+  backend:
     runs-on: ubuntu-latest
 
     services:
@@ -34,10 +34,34 @@ jobs:
       with:
         node-version: 16
 
-    - name: Install Dependencies
+    - name: Navigate to Backend
+      run: cd backend
+
+    - name: Install Backend Dependencies
       run: npm ci
 
-    - name: Run Tests
+    - name: Run Backend Tests
       env:
-        SECRET_JWT_KEY: 4cfd883c7a0ae5b05a5ce1265eec18314eecca7f5d81d8533719663341a3d355
+        SECRET_JWT_KEY: ${{ secrets.SECRET_JWT_KEY }}
       run: npm test
+
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Navigate to Frontend
+      run: cd frontend
+
+    - name: Install Frontend Dependencies
+      run: npm ci
+
+    - name: Build Frontend
+      run: npm run build
