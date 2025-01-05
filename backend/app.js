@@ -8,11 +8,8 @@ import reviewRoute from "./src/routes/review.route.js";
 import touristAttractionRoute from "./src/routes/touristAttraction.route.js";
 import cors from 'cors';
 import swaggerRoute from "./src/routes/swagger/swagger.route.js";
-import morgan from "morgan";
 
 const app = express();
-
-app.use(morgan("dev"));
 
 // Conectar ao banco de dados
 connectDB();
