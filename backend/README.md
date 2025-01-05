@@ -24,4 +24,3 @@ Bem-vindo ao Salvatour, o seu portal para descobrir a cidade mágica de Salvador
 
 ### Links:
 - [Aplicação em Produção](https://back.matc84.tauane.artadevs.tech/docs/)
-
