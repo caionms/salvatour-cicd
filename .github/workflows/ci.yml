@@ -42,6 +42,7 @@ jobs:
       run: npm ci
 
     - name: Run Backend Tests
+      working-directory: ./backend
       env:
         SECRET_JWT_KEY: ${{ secrets.SECRET_JWT_KEY }}
       run: npm test
@@ -66,4 +67,5 @@ jobs:
       run: npm ci
 
     - name: Build Frontend
+      working-directory: ./frontend
       run: npm run build
