@@ -41,10 +41,10 @@ jobs:
       working-directory: ./backend
       run: npm ci
 
-#    - name: Run Backend Lint
-#      working-directory: ./backend
-#      continue-on-error: true
-#      run: npm run lint
+    - name: Run Backend Lint
+      working-directory: ./backend
+      continue-on-error: true
+      run: npm run lint
 
     - name: Run Backend Tests
       working-directory: ./backend
