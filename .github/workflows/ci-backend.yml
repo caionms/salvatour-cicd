@@ -32,7 +32,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 16
+        node-version: '18' 
 
     - name: Navigate to Backend
       run: cd backend
@@ -41,10 +41,10 @@ jobs:
       working-directory: ./backend
       run: npm ci
 
-#    - name: Run Backend Lint
-#      working-directory: ./backend
-#      continue-on-error: true
-#      run: npm run lint
+    - name: Run Backend Lint
+      working-directory: ./backend
+      continue-on-error: true
+      run: npm run lint
 
     - name: Run Backend Tests
       working-directory: ./backend
