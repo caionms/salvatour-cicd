@@ -1,5 +1,5 @@
 # Use uma imagem base oficial do Node.js
-FROM node:16
+FROM node:18-alpine
 
 # Atualize o npm para a última versão estável
 RUN npm install -g npm@8.19.4
