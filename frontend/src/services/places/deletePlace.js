@@ -21,7 +21,6 @@ export function deletePlace(id, accessToken){
 
     })
     .catch(error => {
-      console.log(error)
       reject(error);
 
     });

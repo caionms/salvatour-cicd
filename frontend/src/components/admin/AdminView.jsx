@@ -78,7 +78,7 @@ export default function Admin({
     }
 
     onGetAllUsers();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, []);
 
   function confirmDeleteRow(id) {

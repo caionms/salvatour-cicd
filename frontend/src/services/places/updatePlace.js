@@ -29,7 +29,6 @@ export function updatePlace(id, name, address, openingHours, description, image,
 
     })
     .catch(error => {
-      console.log(error)
       reject(error);
 
     });
