@@ -1,4 +1,4 @@
-name: CI - Backend and Frontend
+name: CI - Backend
 
 on:
   push:
@@ -11,7 +11,7 @@ on:
       - develop
 
 jobs:
-  backend:
+  CI-BackEnd:
     runs-on: ubuntu-latest
 
     services:
@@ -41,31 +41,13 @@ jobs:
       working-directory: ./backend
       run: npm ci
 
+#    - name: Run Backend Lint
+#      working-directory: ./backend
+#      continue-on-error: true
+#      run: npm run lint
+
     - name: Run Backend Tests
       working-directory: ./backend
       env:
         SECRET_JWT_KEY: ${{ secrets.SECRET_JWT_KEY }}
       run: npm test
-
-  frontend:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: 16
-
-    - name: Navigate to Frontend
-      run: cd frontend
-
-    - name: Install Frontend Dependencies
-      working-directory: ./frontend
-      run: npm ci
-
-    - name: Build Frontend
-      working-directory: ./frontend
-      run: npm run build

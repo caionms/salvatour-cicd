@@ -35,4 +35,15 @@ module.exports = {
     "no-useless-escape": "warn",
     "no-unused-vars": "warn"
   },
-}
+  overrides: [
+    {
+      files: ["**/*.test.js", "**/*.test.jsx"],
+      env: {
+        jest: true,
+      },
+    },
+  ],
+  globals: {
+    vi: true,
+  },
+};
