@@ -1,0 +1,84 @@
+name: CI - Backend and Frontend
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+    services:
+      mongo:
+        image: mongo:5.0
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "mongo --eval 'db.adminCommand(\"ping\")'"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Navigate to Backend
+      run: cd backend
+
+    - name: Install Backend Dependencies
+      working-directory: ./backend
+      run: npm ci
+
+#    - name: Run Backend Lint
+#      working-directory: ./backend
+#      continue-on-error: true
+#      run: npm run lint
+
+    - name: Run Backend Tests
+      working-directory: ./backend
+      env:
+        SECRET_JWT_KEY: ${{ secrets.SECRET_JWT_KEY }}
+      run: npm test
+
+  frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16
+
+    - name: Navigate to Frontend
+      run: cd frontend
+
+    - name: Install Frontend Dependencies
+      working-directory: ./frontend
+      run: npm ci
+
+    - name: Run Frontend Lint
+      working-directory: ./frontend
+      run: npm run lint
+
+    - name: Run Frontend Tests
+      working-directory: ./frontend
+      run: npm run test
+
+    - name: Build Frontend
+      working-directory: ./frontend
+      run: npm run build

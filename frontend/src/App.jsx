@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./components/login/Login";
 import Cadastro from "./components/cadastro/Cadastro";
@@ -15,24 +14,80 @@ import NewPlaces from "./components/admin/NewPlaces";
 import UpdatePlace from "./components/admin/UpdatePlace";
 import AdminHome from "./components/admin/AdminHome";
 
-
 function App() {
   return (
-    
     <BrowserRouter>
       <Routes>
         <Route path="/home" element={<ProtectedRoute children={<Home />} />} />
-        <Route path="/places" element={<ProtectedRoute children={<Places />} />} />
+        <Route
+          path="/places"
+          element={<ProtectedRoute children={<Places />} />}
+        />
         <Route path="/" element={<Login />} />
-        <Route path="/admin" element={<ProtectedRoute redirectPath="/home" children={<AdminController />} adminOnly />} />
-        <Route path="/admin/new-places" element={<ProtectedRoute redirectPath="/home" children={<NewPlaces />} adminOnly />} />
-        <Route path="/admin/update-place" element={<ProtectedRoute redirectPath="/home" children={<UpdatePlace />} adminOnly />} />
-        <Route path="/admin/home" element={<ProtectedRoute redirectPath="/home" children={<AdminHome />} adminOnly />} />
-        <Route path="/updateUser" element={<ProtectedRoute children={<CrudUser />} />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute
+              redirectPath="/home"
+              children={<AdminController />}
+              adminOnly
+            />
+          }
+        />
+        <Route
+          path="/admin/new-places"
+          element={
+            <ProtectedRoute
+              redirectPath="/home"
+              children={<NewPlaces />}
+              adminOnly
+            />
+          }
+        />
+        <Route
+          path="/admin/update-place"
+          element={
+            <ProtectedRoute
+              redirectPath="/home"
+              children={<UpdatePlace />}
+              adminOnly
+            />
+          }
+        />
+        <Route
+          path="/admin/home"
+          element={
+            <ProtectedRoute
+              redirectPath="/home"
+              children={<AdminHome />}
+              adminOnly
+            />
+          }
+        />
+        <Route
+          path="/updateUser"
+          element={<ProtectedRoute children={<CrudUser />} />}
+        />
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/recovery" element={<Recovery />} />
-        <Route path="/recoveryToken" element={<PasswordResetRoute element={<SendToken />} routeName="recoveryToken" />} />
-        <Route path="/newPassword" element={<PasswordResetRoute element={<NewPassword />} routeName="newPassword" />} />
+        <Route
+          path="/recoveryToken"
+          element={
+            <PasswordResetRoute
+              element={<SendToken />}
+              routeName="recoveryToken"
+            />
+          }
+        />
+        <Route
+          path="/newPassword"
+          element={
+            <PasswordResetRoute
+              element={<NewPassword />}
+              routeName="newPassword"
+            />
+          }
+        />
         <Route path="/*" element={<Navigate to="/home" />} />
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-import db from "./src/database/configdb.js";
+import connectDB from "./src/database/configdb.js";
 import express from "express";
 import userRoute from "./src/routes/user.route.js";
 import adminRoute from "./src/routes/admin.route.js";
@@ -11,22 +11,20 @@ import swaggerRoute from "./src/routes/swagger/swagger.route.js";
 
 const app = express();
 
-db.connect();
-
+// Conectar ao banco de dados
+connectDB();
 
 const corsOpts = {
     origin: '*',
-  
     methods: [
-      'GET',
-      'POST',
-      'PATCH',
-      'DELETE'
+        'GET',
+        'POST',
+        'PATCH',
+        'DELETE'
     ],
-  
     allowedHeaders: [
-      'Content-Type',
-      'Authorization'
+        'Content-Type',
+        'Authorization'
     ],
 };
 
@@ -41,6 +39,7 @@ app.use("/touristAttraction", touristAttractionRoute);
 app.use("/", rootRoute);
 app.use("/docs", swaggerRoute);
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => { });
-
+const PORT = process.env.PORT || 3000; // Adicionado valor padrão
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});

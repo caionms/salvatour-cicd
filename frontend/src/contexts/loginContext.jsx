@@ -1,18 +1,13 @@
-import React, {useState, createContext} from "react";
+import { useState, createContext } from "react";
 
-export const LoginContext = createContext()
+export const LoginContext = createContext();
 
-export function LoginProvider(props){
-    
-    const [form, setForm] = useState([])
+export function LoginProvider(props) {
+  const [form, setForm] = useState([]);
 
-
-    return(
-
-        <LoginContext.Provider value={[form, setForm]}>
-
-            {props.children}
-
-        </LoginContext.Provider>
-    )
+  return (
+    <LoginContext.Provider value={[form, setForm]}>
+      {props.children}
+    </LoginContext.Provider>
+  );
 }
