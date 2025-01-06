@@ -6,7 +6,7 @@ const findById = async (req, res) => {
   try {
     const id = req.id;
     const user = await userService.findByIdService(id);
-    res.status(200).json({...user, test: "Hello, world!"});
+    res.status(200).json(user);
   } catch (error) {
     console.log(error)
     return res.status(500).json({ error: "Internal Server Error" });
