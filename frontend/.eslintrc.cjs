@@ -14,7 +14,8 @@ module.exports = {
   plugins: ['react-refresh', 'prettier'],
   rules: {
     'react/jsx-no-target-blank': 'off',
-    'react/no-children-prop': "off",
+    'react/no-children-prop': 'off',
+    'react/prop-types': 'off',
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
