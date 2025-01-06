@@ -1,25 +1,22 @@
-function validateEmail (email){
+function validateEmail(email) {
+  const regexEmail =
+    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
 
-    const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
-    if (regexEmail.test(email)){
-        return true;
-    }
+  if (regexEmail.test(email)) {
+    return true;
+  }
 }
-function validatePassword (password) {
+function validatePassword(password) {
+  const regexPassword =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+[{\]};:'",/?]).{8,}$/;
 
-    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+[{\]};:'",/?]).{8,}$/;
-
-    if (regexPassword.test(password)){
-        return true;
-    }
-}
-
-function inputValidator (email, password){
-
-    return validateEmail(email) && validatePassword(password)
+  if (regexPassword.test(password)) {
+    return true;
+  }
 }
 
-export {
-    inputValidator, validateEmail, validatePassword
+function inputValidator(email, password) {
+  return validateEmail(email) && validatePassword(password);
 }
+
+export { inputValidator, validateEmail, validatePassword };

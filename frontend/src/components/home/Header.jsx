@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 /**
  * Componente Header
@@ -11,49 +10,65 @@ import { useLocation } from 'react-router-dom';
  *
  */
 
+export default function Header() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-export default function Header(){
-    const navigate = useNavigate();
-    const location = useLocation();
+  const isAdmin = localStorage.getItem("isAdmin") == "true";
+  const isPaginaInicial =
+    location.pathname == (isAdmin ? "/admin/home" : "/home");
 
-    const isAdmin = localStorage.getItem("isAdmin") == "true";
-    const isPaginaInicial = location.pathname == (isAdmin ? "/admin/home" : "/home");
-    
-    /**
-     * Limpa os status de login no localStorage.
-     * Isso impede que o usuário acesse as páginas protegidas
-     */
-    function handleStatusLogin(){
-        localStorage.removeItem('token')
-        localStorage.removeItem('isAdmin')
-        localStorage.removeItem('tokenValid')
-        localStorage.removeItem('email')
-        localStorage.removeItem('password')
-    }
+  /**
+   * Limpa os status de login no localStorage.
+   * Isso impede que o usuário acesse as páginas protegidas
+   */
+  function handleStatusLogin() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("isAdmin");
+    localStorage.removeItem("tokenValid");
+    localStorage.removeItem("email");
+    localStorage.removeItem("password");
+  }
 
-    function goHome() {
-        navigate(isAdmin ? "/admin/home" : "/home")
-    }
+  function goBack() {
+    navigate(-1);
+  }
 
-    function goBack() {
-        navigate(-1);
-    }
+  return (
+    <header className="cabecalho">
+      {isPaginaInicial ? (
+        <div />
+      ) : (
+        <button className="text-ola" type="button" onClick={goBack}>
+          {"< Voltar"}
+        </button>
+      )}
 
-    return(
-
-
-        <header className="cabecalho">
-        
-        {isPaginaInicial ? <div/> : <button className="text-ola" type="button" onClick={goBack}>{"< Voltar"}</button>}
-        
-        <div className="dropdown-center" >
-        <button className="text-ola dropdown-toggle" type="button" data-bs-toggle="dropdown">Olá, seja bem vindo(a)</button>
+      <div className="dropdown-center">
+        <button
+          className="text-ola dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+        >
+          Olá, seja bem vindo(a)
+        </button>
         <ul className="dropdown-menu">
-            <li className="dropdown-item"><Link to='/updateUser' className="text-editar menu-item">Editar perfil</Link></li>
-            <li className="dropdown-item"><Link to='/' className="text-editar menu-item" onClick={handleStatusLogin}>Sair</Link></li>
+          <li className="dropdown-item">
+            <Link to="/updateUser" className="text-editar menu-item">
+              Editar perfil
+            </Link>
+          </li>
+          <li className="dropdown-item">
+            <Link
+              to="/"
+              className="text-editar menu-item"
+              onClick={handleStatusLogin}
+            >
+              Sair
+            </Link>
+          </li>
         </ul>
-        </div>
-
-        </header>
-    )
+      </div>
+    </header>
+  );
 }
