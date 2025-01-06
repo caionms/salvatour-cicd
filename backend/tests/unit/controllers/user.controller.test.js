@@ -9,7 +9,7 @@ jest.mock("bcrypt");
 
 describe("User Controller", () => {
   describe("findById", () => {
-    it.skip("should return user details by ID", async () => {
+    it("should return user details by ID", async () => {
       userService.findByIdService.mockResolvedValue({ id: "user123", name: "John Doe" });
 
       const req = { id: "user123" };
