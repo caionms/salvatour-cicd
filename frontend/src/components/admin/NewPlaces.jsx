@@ -1,4 +1,4 @@
-import { useContext, useState, useRef } from "react";
+import React, { useContext, useState, useRef } from "react";
 import Alert from "../login/Alert";
 import { AlertContext } from "../../contexts/alertContext";
 import { AlertTypeContext } from "../../contexts/alertTypeContext";
@@ -23,9 +23,9 @@ export default function NewPlaces() {
   const [form, setForm] = useState(initialFormState);
   const [image, setImage] = useState("");
   const fileInputRef = useRef(null);
-  const [, setShowAlert] = useContext(AlertContext);
-  const [, setAlertType] = useContext(AlertTypeContext);
-  const [, setAlertColor] = useContext(AlertColorContext);
+  const [showAlert, setShowAlert] = useContext(AlertContext);
+  const [alertType, setAlertType] = useContext(AlertTypeContext);
+  const [alertColor, setAlertColor] = useContext(AlertColorContext);
   const token = localStorage.getItem("token");
 
   function handleAlert(state, type, color = null) {
@@ -62,7 +62,7 @@ export default function NewPlaces() {
         image,
         token
       )
-        .then(() => {
+        .then((data) => {
           handleAlert(true, "Cadastro realizado com sucesso", "success");
           setForm(initialFormState); // Redefinir o formulário
           if (fileInputRef.current) {

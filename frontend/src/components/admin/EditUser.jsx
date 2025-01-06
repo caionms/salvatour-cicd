@@ -27,7 +27,7 @@ export default function EditUser({
     setCityHelperText("");
     setState(user.state);
     setStateHelperText("");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+     
   }, [showEditUser]);
 
   function validateForm(event) {

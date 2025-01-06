@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getAllPlaces } from "../../services/places/getAllPlaces";
 import { deletePlace } from "../../services/places/deletePlace";
 import { useNavigate } from "react-router-dom";
@@ -18,13 +18,12 @@ export default function Carousel() {
 
   useEffect(() => {
     setPlaces();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function setPlaces() {
     getAllPlaces(token)
       .then((data) => {
-        console.log(data);
+        // console.log(data)
         setListPlaces(data);
       })
       .catch((error) => {
@@ -43,7 +42,7 @@ export default function Carousel() {
     );
     if (confirm) {
       deletePlace(id, token)
-        .then(() => {
+        .then((data) => {
           window.location.reload();
         })
         .catch((error) => {

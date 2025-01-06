@@ -29,7 +29,6 @@ export function registerPlace(name, address, openingHours, description, image, a
 
     })
     .catch(error => {
-      console.log(error)
       reject(error);
 
     });
